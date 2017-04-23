@@ -1,41 +1,47 @@
 const readline = require('readline');
 
+// Solve problem
 const solve = (data) => {
+
+  // Your bloody algorithm
+
   return data;
 };
 
+// Print output
 const formatOutput = (test, result) => {
   process.stdout.write('Case #'+ test +': ' + result + '\n');
-}
+};
 
-const readInput = () => {
+// Parse input data
+const parseInput = (data) => {
 
-  const rl = readline.createInterface({
-    input: process.stdin,
-    output: process.stdout,
-    terminal: false
-  });
+  const total = +data.shift();
 
-  // Total number of test cases
-  let total = 0;
+  for(let test=1; test<=total; test++) {
 
-  // Current test case
-  let test = 0;
+    // 1 test correspond to 1 line
+    formatOutput(test, solve(data.shift()));
 
-  // Read data stream line by line
-  rl.on('line', (line) => {
+    // 1 test correspond to N lines
+    // const [n, m] = data.shift().split(' ').map(Number);
+    // const params = [];
+    //
+    // params.push(data.splice(0, m));
+    //
+    // formatOutput(test, solve(n,params));
+  }
+};
 
-    // The first line of the input gives the number of test cases
-    if(!total) {
-      total = parseInt(line, 10);
-      return;
-    }
+// Read data stream
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+  terminal: false
+});
 
-    if (test < total) {
-      let result = solve(line);
-      formatOutput(++test, result);
-    }
-  });
-}
+const data = [];
 
-readInput();
+rl.on('line', line => data.push(line));
+
+rl.on('close', () => parseInput(data));
