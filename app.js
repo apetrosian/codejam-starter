@@ -25,9 +25,7 @@ const parseInput = (data) => {
 
     // 1 test correspond to N lines
     // const [n, m] = data.shift().split(' ').map(Number);
-    // const params = [];
-    //
-    // params.push(data.splice(0, m));
+    // const params = data.splice(0, m);
     //
     // formatOutput(test, solve(n,params));
   }
